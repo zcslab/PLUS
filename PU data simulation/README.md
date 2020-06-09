@@ -1,11 +1,6 @@
 # Positive Unlabeled data simulation
-**P**ositive and unlabeled **L**earning from **U**nbalanced cases and **S**parse structures, or **PLUS**, represents the first one to use positive and unlabeled learning framework to specifically model the under-diagnosis issue in predicting cancer metastasis potential. PLUS is specifically tailored for studying metastasis that deals with the unbalanced instance allocation as well as unknown metastasis prevalence, which are not capable by any other methods. Its robustness grants the possibility to harness the power of big data by integrating large scale datasets from different cancer types. Insights gleaned from this research will prove useful to the diagnosis and treatment of clinical metastatic disease.
-
-## The motivation of PLUS
-![image](https://github.com/xiaoyulu95/PLUS/blob/master/fig/data_simulation.png)
-
-(a) Among the patients who were diagnosed as non-metastatic, some were under-diagnosed. Traditional classification using diagnosis as response may underestimate the cancer metastasis potential. PLUS is designed to recognize the bias in under-diagnosis, so that patients with higher metastasis potential could be accurately classified. (b) In TCGA Pan-cancer study, for patients who are clinically diagnosed as non-metastatic (M0) at baseline in each cancer type (columns), the top three rows shows the proportions of patients with follow-up information who were found alive and with non- progressed disease (NP-Alive), alive and with progressed disease (P-Alive), and dead (Dead); and the bottom three rows show the same proportions for patients who were diagnosed as metastatic (M1) at baseline. (c) The median follow-up time for patients who were diagnosed as non-metastatic (blue) and as metastatic (yellow) at baseline for each cancer type.
-
+To comprehensively assess the proposed method, we designed a series of simulation studies. Four different scenarios for the noise distribution are simulated that correspond to: population balanced with two classes well separated, or clear balanced scenario; population balanced with two classes not well separated, or noisy balance scenario; population unbalanced with two classes well separated, or clear unbalanced scenario; population unbalanced with two classes not well separated, or the noisy unbalanced scenario. The alteration of population unbalancedness and separation are achieved by designing different propensity score function as follows:
+![image](https://github.com/xiaoyulu95/PLUS/blob/master/fig/distribution.png)
 
 
 ## Usage
