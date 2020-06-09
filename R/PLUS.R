@@ -1,4 +1,5 @@
 
+
 #' PLUS main function.
 #'
 #' @param train_data train_data N*M matrix which has N samples and M variables.
@@ -75,6 +76,5 @@ PLUS <- function(train_data=train_data,Label.obs=Label.obs,Sample_use_time=30,l.
   return(list(pred.y=pred.y,cutoff=cutoff,pred.coef1=pred.coef1))
 
 }
-
 
 
