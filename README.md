@@ -41,6 +41,10 @@ Result list contains three elements: `pred.y` shows the probability for each sam
 
 ## Example
 ```
+### The R packages involved in LTMG package
+library(PLUS)
+library(glmnet)
+
 X=PLUS::example_data$train_data
 Label=PLUS::example_data$Label.obs
 Prediction=PLUS(train_data=X,Label.obs=Label,Sample_use_time=30,l.rate=1,qq=0.1)
