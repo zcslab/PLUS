@@ -63,18 +63,82 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="plus-r-package" class="section level1">
+<div id="plus" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#plus-r-package" class="anchor"></a>PLUS r package</h1></div>
+<a href="#plus" class="anchor"></a>PLUS</h1></div>
+<p><strong>P</strong>ositive and unlabeled <strong>L</strong>earning from <strong>U</strong>nbalanced cases and <strong>S</strong>parse structures, or <strong>PLUS</strong>, represents the first one to use positive and unlabeled learning framework to specifically model the under-diagnosis issue in predicting cancer metastasis potential. PLUS is specifically tailored for studying metastasis that deals with the unbalanced instance allocation as well as unknown metastasis prevalence, which are not capable by any other methods. Its robustness grants the possibility to harness the power of big data by integrating large scale datasets from different cancer types. Insights gleaned from this research will prove useful to the diagnosis and treatment of clinical metastatic disease.</p>
+<div id="the-motivation-of-plus" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-motivation-of-plus" class="anchor"></a>The motivation of PLUS</h2>
+<p><img src="https://github.com/xiaoyulu95/PLUS/blob/master/fig/F1.png" alt="image"></p>
+<p>(a) Among the patients who were diagnosed as non-metastatic, some were under-diagnosed. Traditional classification using diagnosis as response may underestimate the cancer metastasis potential. PLUS is designed to recognize the bias in under-diagnosis, so that patients with higher metastasis potential could be accurately classified. (b) In TCGA Pan-cancer study, for patients who are clinically diagnosed as non-metastatic (M0) at baseline in each cancer type (columns), the top three rows shows the proportions of patients with follow-up information who were found alive and with non- progressed disease (NP-Alive), alive and with progressed disease (P-Alive), and dead (Dead); and the bottom three rows show the same proportions for patients who were diagnosed as metastatic (M1) at baseline. (c) The median follow-up time for patients who were diagnosed as non-metastatic (blue) and as metastatic (yellow) at baseline for each cancer type.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div id="please-report-the-bug-as-the-description-in-the-questionproblem" class="section level4">
-<h4 class="hasAnchor">
-<a href="#please-report-the-bug-as-the-description-in-the-questionproblem" class="anchor"></a>Please report the bug as the description in the Question&amp;Problem.</h4>
-<pre><code>library("devtools")
-devtools::install_github("zcslab/PLUS")</code></pre>
+<pre><code>#install dependent pkg
+
+#install.packages("glmnet")
+
+#install.packages("devtools")
+
+devtools::install_github("xiaoyulu95/PLUS",force=TRUE)</code></pre>
 </div>
+<div id="usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h2>
+<pre><code>Prediction=PLUS(train_data=X,Label.obs=Label,Sample_use_time=30,l.rate=1,qq=0.1)</code></pre>
+</div>
+<div id="arguments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#arguments" class="anchor"></a>Arguments</h2>
+<ul>
+<li><p><code>train_data</code>: Gene expression matrix which has N samples and M variables</p></li>
+<li><p><code>Label.obs</code>: Positive Unlabeled for each sample, 1 means true positive label, 0 means unlabeled labels</p></li>
+<li><p><code>Sample_use_time</code>: Used in stop criteria, how many times each samples to be used in training process</p></li>
+<li><p><code>l.rate</code>: Control how much information from last iteration will be used in next</p></li>
+<li><p><code>qq</code>: Quantile of the probability for positive samples, used to determine the cutoff between positive and negtive</p></li>
+</ul>
+</div>
+<div id="value" class="section level2">
+<h2 class="hasAnchor">
+<a href="#value" class="anchor"></a>Value</h2>
+<p>Result list contains three elements: <code>pred.y</code> shows the probability for each same to be predicted as positive; <code>cutoff</code> is the reference cutoff to transfer continues probability to binary 0/1 label; <code>pred.coef1</code> take the variable coefficient used in prediction model.</p>
+</div>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
+<pre><code>### The R packages involved in PLUS package
+library(PLUS)
+library(glmnet)
+
+X=PLUS::example_data$train_data
+Label=PLUS::example_data$Label.obs
+Prediction=PLUS(train_data=X,Label.obs=Label,Sample_use_time=30,l.rate=1,qq=0.1)</code></pre>
+</div>
+<div id="pu-data-simulation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pu-data-simulation" class="anchor"></a>PU data simulation</h2>
+<p>PLUS package also provide the capability to simulate positive unlabeled data in different setting. Detail: (<a href="https://github.com/xiaoyulu95/PLUS/tree/master/PU%20data%20simulation" class="uri">https://github.com/xiaoyulu95/PLUS/tree/master/PU%20data%20simulation</a>)</p>
+</div>
+<div id="contact-information" class="section level2">
+<h2 class="hasAnchor">
+<a href="#contact-information" class="anchor"></a>Contact Information</h2>
+<ul>
+<li>
+<a href="https://zcslab.github.io/people/xiaoyu/">Xiaoyu Lu</a> (<a href="mailto:lu14@iu.edu" class="email">lu14@iu.edu</a>)</li>
+</ul>
+<p>Ph.D. candidate, Indiana University School of Medicine</p>
+<ul>
+<li>
+<a href="https://fsph.iupui.edu/about/directory/zhou-junyi.html">Junyi Zhou</a> (<a href="mailto:junyzhou@iu.edu" class="email">junyzhou@iu.edu</a>)</li>
+</ul>
+<p>Ph.D. candidate, Department of Biostatistics, Indiana University</p>
+</div>
+<div id="reference" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reference" class="anchor"></a>Reference</h2>
+<p>Zhou, J., Lu, X., Chang, W., Wan, C., Zhang, C. and Cao, S., 2020. PLUS: predicting pan-cancer metastasis potential based on positive and unlabeled learning</p>
 </div>
 </div>
   </div>
