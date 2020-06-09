@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591672317879.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3079244656",
+    "id" : "64835983",
+    "lastKnownWriteTime" : 1591673193,
+    "last_content_update" : 1591673193623,
+    "path" : "~/F/PhD_Research/2020_06_08_PLUS/PLUS/R/PLUS.R",
+    "project_path" : "R/PLUS.R",
+    "properties" : {
+        "cursorPosition" : "25,40",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
