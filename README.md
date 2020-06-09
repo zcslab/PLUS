@@ -9,15 +9,13 @@
 
 ## Installation
 
-
+```
 #install dependent pkg
 
 #install.packages("glmnet")
 
-
 #install.packages("devtools")
 
-```
 devtools::install_github("xiaoyulu95/PLUS",force=TRUE)
 ```
 
