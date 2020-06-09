@@ -17,7 +17,9 @@
 
 #install.packages("devtools")
 
-#devtools::install_github("xiaoyulu95/PLUS",force=TRUE)
+```
+devtools::install_github("xiaoyulu95/PLUS",force=TRUE)
+```
 
 ## Useage
 ```
@@ -41,7 +43,7 @@ Result list contains three elements: `pred.y` shows the probability for each sam
 
 ## Example
 ```
-### The R packages involved in LTMG package
+### The R packages involved in PLUS package
 library(PLUS)
 library(glmnet)
 
