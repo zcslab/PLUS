@@ -1,2 +1,0 @@
-importFrom("stats", "coef", "predict", "quantile", "rbinom")
-importFrom("glmnet", "cv.glmnet")
