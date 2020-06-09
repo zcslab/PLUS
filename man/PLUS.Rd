@@ -8,18 +8,18 @@ PLUS(train_data = train_data, Label.obs = Label.obs,
   Sample_use_time = 30, l.rate = 1, qq = 0.1)
 }
 \arguments{
-\item{train_data}{training data.}
+\item{train_data}{train_data N*M matrix which has N samples and M variables.}
 
-\item{Label.obs}{.Please write what this parameter means}
+\item{Label.obs}{Positive Unlabeled for each sample, 1 means true positive label, 0 means unlabeled labels.}
 
-\item{Sample_use_time}{Please write what this parameter means.}
+\item{Sample_use_time}{used in stop criteria, how many times each samples to be used in training process.}
 
-\item{l.rate}{Learning rate.}
+\item{l.rate}{control how much information from last iteration will be used in next.}
 
-\item{qq}{Please write what qq means.}
+\item{qq}{quantile of the probability for positive samples, used to determine the cutoff between positive and negtive.}
 }
 \value{
-A list consist of three objects including predicted y, predicted coefficient, cutoff.
+A list consist of three objects including predicted y, predicted coefficient, cutoff. (output 1. probability for each sample to be labeled as positive;output 2. cutoff to distinguish probability between positive and negtive samples; output 3. variable coeffecient non-zero means used in modeling)
 }
 \description{
 PLUS main function.

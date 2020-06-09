@@ -1,30 +1,12 @@
-#usage: pred_PLUS=PLUS(train_data=train_data,Label.obs=Label.obs)
-#input 1. train_data N*M matrix which has N samples and M variables
-#input 2. Label.obs: Positive Unlabeled for each sample, 1 means true positive label, 0 means unlabeled labels
-#input 3. Sample_use_time: used in stop criteria, how many times each samples to be used in training process
-#input 4. l.rate: control how much information from last iteration will be used in next
-#input 5. qq: quantile of the probability for positive samples, used to determine the cutoff between positive and negtive
-
-#output 1. probability for each sample to be labeled as positive
-#output 2. cutoff to distinguish probability between positive and negtive samples
-#output 3. variable coeffecient non-zero means used in modeling
-#example aaa=PLUS(train_data=example_data$train_data,Label.obs=example_data$Label.obs,Sample_use_time=30,l.rate=1,qq=0.1)
-
-#library(glmnet)
-
-
-
-
-
 
 #' PLUS main function.
 #'
-#' @param train_data training data.
-#' @param Label.obs .Please write what this parameter means
-#' @param Sample_use_time Please write what this parameter means.
-#' @param l.rate Learning rate.
-#' @param qq Please write what qq means.
-#' @return A list consist of three objects including predicted y, predicted coefficient, cutoff.
+#' @param train_data train_data N*M matrix which has N samples and M variables.
+#' @param Label.obs Positive Unlabeled for each sample, 1 means true positive label, 0 means unlabeled labels.
+#' @param Sample_use_time used in stop criteria, how many times each samples to be used in training process.
+#' @param l.rate control how much information from last iteration will be used in next.
+#' @param qq quantile of the probability for positive samples, used to determine the cutoff between positive and negtive.
+#' @return A list consist of three objects including predicted y, predicted coefficient, cutoff. (output 1. probability for each sample to be labeled as positive;output 2. cutoff to distinguish probability between positive and negtive samples; output 3. variable coeffecient non-zero means used in modeling)
 PLUS=function(train_data=train_data,Label.obs=Label.obs,Sample_use_time=30,l.rate=1,qq=0.1){
 
   N=dim(train_data)[1]

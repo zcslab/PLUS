@@ -125,29 +125,29 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>train_data</th>
-      <td><p>training data.</p></td>
+      <td><p>train_data N*M matrix which has N samples and M variables.</p></td>
     </tr>
     <tr>
       <th>Label.obs</th>
-      <td><p>.Please write what this parameter means</p></td>
+      <td><p>Positive Unlabeled for each sample, 1 means true positive label, 0 means unlabeled labels.</p></td>
     </tr>
     <tr>
       <th>Sample_use_time</th>
-      <td><p>Please write what this parameter means.</p></td>
+      <td><p>used in stop criteria, how many times each samples to be used in training process.</p></td>
     </tr>
     <tr>
       <th>l.rate</th>
-      <td><p>Learning rate.</p></td>
+      <td><p>control how much information from last iteration will be used in next.</p></td>
     </tr>
     <tr>
       <th>qq</th>
-      <td><p>Please write what qq means.</p></td>
+      <td><p>quantile of the probability for positive samples, used to determine the cutoff between positive and negtive.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list consist of three objects including predicted y, predicted coefficient, cutoff.</p>
+    <p>A list consist of three objects including predicted y, predicted coefficient, cutoff. (output 1. probability for each sample to be labeled as positive;output 2. cutoff to distinguish probability between positive and negtive samples; output 3. variable coeffecient non-zero means used in modeling)</p>
     
 
   </div>
