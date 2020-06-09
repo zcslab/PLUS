@@ -4,21 +4,21 @@ PU_data_simulation=function(p,N,confident_rate=0.5,scenario='noisy_balance',vali
 
   noisy_rate=confident_rate
   X = matrix(rnorm(N * p, 0,1), ncol = p, nrow = N)
-  
+
   if(scenario=='noisy_balance'){
     Lx = 2*X[,1] + 4*X[,2]*X[,3] - 3*sin(X[,4] + X[,5]) - 0.1*(X[,6])^4 # noisy balanced allocation
   }else if(scenario=='clear_balanced'){
     Lx = 2*X[,1] + 4*X[,2]*(X[,3]+5) - 3*sin(X[,4] + X[,5]) - 0.1*X[,6]^4 # clear balanced allocation
   }else if(scenario=='clear_unbalanced'){
-    Lx = 2*X[,1] + 8*X[,2]*X[,3] - 3*sin(X[,4] + X[,5]) - 3*(X[,6]-1.2)^4 # clear unbalanced allocation 
+    Lx = 2*X[,1] + 8*X[,2]*X[,3] - 3*sin(X[,4] + X[,5]) - 3*(X[,6]-1.2)^4 # clear unbalanced allocation
   }else if(scenario=='noisy_unbalanced'){
-    Lx = 2*X[,1] + 1.5*X[,2]*X[,3] - 3*sin(X[,4] + X[,5]) - (X[,6]-1)^4 # noisy unbalanced allocation 
+    Lx = 2*X[,1] + 1.5*X[,2]*X[,3] - 3*sin(X[,4] + X[,5]) - (X[,6]-1)^4 # noisy unbalanced allocation
   }
- 
+
   pr = 1/(1 + exp(-Lx))
 
   Label = rbinom(N, 1, pr)
-  
+
   if(valid=='both'){
     valid.id1 = sample(which(Label==1), max(round(noisy_rate*sum(Label==1)),50))
     valid.id0 = sample(which(Label==0), max(round(noisy_rate*sum(Label==0)),50))
@@ -29,11 +29,11 @@ PU_data_simulation=function(p,N,confident_rate=0.5,scenario='noisy_balance',vali
     valid.id1 = NULL
     valid.id0 = sample(which(Label==0),max(round(noisy_rate*sum(Label==0)),50))
   }
-  
+
   valid.id  = c(valid.id1, valid.id0)
-  
+
   Label.obs_111 = Label; Label.obs_111[-valid.id] = rbinom(N-length(valid.id),1,0.5)
-  
+
   if (valid=='both'){
     TPR.PUlasso1 = 0
     TNR.PUlasso1 = 0
@@ -55,7 +55,7 @@ PU_data_simulation=function(p,N,confident_rate=0.5,scenario='noisy_balance',vali
       #how many 0 in -valid
       true.pi = (sum(Label==0)-length(valid.id))/(N-length(valid.id))
     }
-    
+
     Label.obs = rep(NA,length(true_Label))
     Label.obs[valid.id] = 1
     Label.obs[-valid.id] = 0
@@ -63,9 +63,3 @@ PU_data_simulation=function(p,N,confident_rate=0.5,scenario='noisy_balance',vali
   example_data=list(train_data=X,Label.obs=Label.obs,Label.true=true_Label)
   return(example_data)
 }
-
-
-
-
-
-
