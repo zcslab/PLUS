@@ -1,4 +1,5 @@
 
+
 #' PLUS main function.
 #'
 #' @param train_data train_data N*M matrix which has N samples and M variables.
@@ -7,8 +8,8 @@
 #' @param l.rate control how much information from last iteration will be used in next.
 #' @param qq quantile of the probability for positive samples, used to determine the cutoff between positive and negtive.
 #' @return A list consist of three objects including predicted y, predicted coefficient, cutoff. (output 1. probability for each sample to be labeled as positive;output 2. cutoff to distinguish probability between positive and negtive samples; output 3. variable coeffecient non-zero means used in modeling)
-
 PLUS <- function(train_data=train_data,Label.obs=Label.obs,Sample_use_time=30,l.rate=1,qq=0.1){
+
   N=dim(train_data)[1]
   Label=Label.obs
   train.X=train_data
@@ -73,7 +74,7 @@ PLUS <- function(train_data=train_data,Label.obs=Label.obs,Sample_use_time=30,l.
   pred.coef1=coef(fit.pi, s = "lambda.min")
 
   return(list(pred.y=pred.y,cutoff=cutoff,pred.coef1=pred.coef1))
-}
 
+}
 
 
