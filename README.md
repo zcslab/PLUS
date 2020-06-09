@@ -19,7 +19,7 @@
 devtools::install_github("xiaoyulu95/PLUS",force=TRUE)
 ```
 
-## Useage
+## Usage
 ```
 Prediction=PLUS(train_data=X,Label.obs=Label,Sample_use_time=30,l.rate=1,qq=0.1)
 ```
