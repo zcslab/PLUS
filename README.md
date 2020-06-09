@@ -61,3 +61,8 @@ Ph.D. candidate, Indiana University School of Medicine
 (junyzhou@iu.edu)
 
 Ph.D. candidate, Department of Biostatistics, Indiana University
+
+
+## Reference
+Zhou, J., Lu, X., Chang, W., Wan, C., Zhang, C. and Cao, S., 2020. LTMG: a novel statistical modeling of transcriptional expression states in single-cell RNA-Seq data.
+
